@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      @font-face {
+        font-family: 'r';
+        font-display: swap;
+        src: url(fonts/SFProText-Regular.woff2) format('woff2'),
+          url(fonts/SFProText-Regular.woff) format('woff');
+        font-weight: 400;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: 's';
+        font-display: swap;
+        src: url(fonts/SFProText-Semibold.woff2) format('woff2'),
+          url(fonts/SFProText-Semibold.woff) format('woff');
+        font-weight: 600;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: 'b';
+        font-display: swap;
+        src: url(fonts/SFProText-Bold.woff2) format('woff2'),
+          url(fonts/SFProText-Bold.woff) format('woff');
+        font-weight: 700;
+        font-style: normal;
+      }
+      * {
+        padding: 0;
+        margin: 0;
+        border: 0;
+      }
+      *,
+      :after,
+      :before {
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+      }
+      :active,
+      :focus {
+        outline: 0;
+      }
+      body,
+      html {
+        height: 100vh;
+        width: 100%;
+        font-size: 100%;
+        -ms-text-size-adjust: 100%;
+        -moz-text-size-adjust: 100%;
+        -webkit-text-size-adjust: 100%;
+        font-family: 'r', Arial, sans-serif;
+      }
+      button,
+      input {
+        font-family: inherit;
+      }
+      input::-ms-clear {
+        display: none;
+      }
+      button::-moz-focus-inner {
+        padding: 0;
+        border: 0;
+      }
+      a,
+      a:visited {
+        text-decoration: none;
+      }
+      ul li {
+        list-style: none;
+      }
+      .header__contacts {
+        background-color: #2398ab;
+      }
+      @media (max-width: 767.9px) {
+        .header__contacts {
+          display: none;
+        }
+      }
+      .header__body {
+        min-height: 450px;
+        position: relative;
+      }
+      @media (max-width: 1199.9px) {
+        .header__body {
+          min-height: 500px;
+        }
+        .header__navbar-label {
+          margin-left: 25px;
+        }
+      }
+      .header__body-img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        height: 100%;
+        width: 100%;
+        -o-object-fit: cover;
+        object-fit: cover;
+      }
+      .header__contacts-container {
+        padding: 0 2px;
+      }
+      .header__contacts-subscription {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+      }
+      .header__contacts-mail {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+      }
+      .header__navbar {
+        position: relative;
+        z-index: 3;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        height: 66px;
+        padding: 2px;
+      }
+      .header__navbar-img {
+        width: 148px;
+        height: 44px;
+      }
+      @media (max-width: 1199.9px) {
+        .header__navbar-img {
+          width: 100px;
+          height: 30px;
+        }
+      }
+      .header__content {
+        position: relative;
+        z-index: 2;
+        margin-top: 60px;
+      }
+      .header__content-body {
+        width: 100%;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+      }
+      .header__content-tilte {
+        margin-bottom: 53px;
+      }
+      .header__content-data {
+        width: 100%;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+      }
+      .header__content-input {
+        width: 66.8%;
+        height: 56px;
+        border-radius: 10px;
+        position: relative;
+        z-index: 4;
+        padding: 18px 16px;
+      }
+      .header__content-input::-webkit-input-placeholder {
+        font-family: 'r';
+        font-size: 14px;
+        line-height: 120%;
+      }
+      .header__content-input::-moz-placeholder {
+        font-family: 'r';
+        font-size: 14px;
+        line-height: 120%;
+      }
+      .header__content-input:-ms-input-placeholder {
+        font-family: 'r';
+        font-size: 14px;
+        line-height: 120%;
+      }
+      .header__content-input::-ms-input-placeholder {
+        font-family: 'r';
+        font-size: 14px;
+        line-height: 120%;
+      }
+      @media (max-width: 767.9px) {
+        .header__content-input {
+          width: 80%;
+        }
+      }
+      @media (max-width: 480px) {
+        .header__body {
+          min-height: 490px;
+        }
+        .header__navbar-label {
+          margin-left: 10px;
+        }
+        .header__content-input::-webkit-input-placeholder {
+          font-size: 12px;
+        }
+        .header__content-input::-moz-placeholder {
+          font-size: 12px;
+        }
+        .header__content-input:-ms-input-placeholder {
+          font-size: 12px;
+        }
+        .header__content-input::-ms-input-placeholder {
+          font-size: 12px;
+        }
+        .header__content-input {
+          width: 91.7%;
+          font-size: 12px;
+        }
+        .header__content-btn {
+          display: none;
+        }
+      }
+      .header__content-btn {
+        font-size: 16px;
+        line-height: 110%;
+        font-family: 'b';
+        color: #fff;
+        background-color: #2398ab;
+        padding: 14px 22px 14px 42px;
+        border-radius: 10px;
+        margin-left: -120px;
+        position: relative;
+        z-index: 5;
+      }
+      .header__content-btn::before {
+        content: '';
+        background: url(img/icons/search.svg) no-repeat;
+        position: absolute;
+        top: 16px;
+        left: 21px;
+        width: 15px;
+        height: 15px;
+        -o-object-fit: cover;
+        object-fit: cover;
+      }
+      .header__content-btn-sm {
+        background-color: #2398ab;
+        padding: 14px 22px;
+        border-radius: 10px;
+        display: none;
+        margin-left: -64px;
+        position: relative;
+        z-index: 5;
+      }
+      @media (max-width: 480px) {
+        .header__content-btn-sm {
+          display: block;
+        }
+      }
+      .header__content-img-sm {
+        width: 15px;
+        height: 15px;
+      }
+      .header__content-buttons {
+        width: 100%;
+        margin-top: 20px;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -webkit-column-gap: 12px;
+        -moz-column-gap: 12px;
+        column-gap: 12px;
+      }
+      .header__content-button {
+        padding: 12px 10px 12px 28px;
+        background-color: rgba(255, 255, 255, 0.2);
+        border-radius: 10px;
+        color: #fff;
+      }
+      @media (max-width: 480px) {
+        .header__content-button {
+          padding: 8px 11px 8px 27px;
+        }
+        .header__content-button:last-child {
+          display: none;
+        }
+      }
+      .socials__content {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        height: 60px;
+      }
+      .socials__title {
+        font-size: 18px;
+        font-family: 'r';
+        line-height: 120%;
+        color: #fff;
+      }
+      .socials__items {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        padding-top: 3px;
+      }
+      .socials__link {
+        margin-left: -25px;
+      }
+      .socials__link:first-child {
+        margin-left: 15px;
+      }
+      .connection__mail {
+        display: block;
+        margin-right: 20px;
+        font-size: 18px;
+        font-family: 'r';
+        line-height: 120%;
+        color: #fff;
+        position: relative;
+      }
+      .connection__mail::before {
+        content: '';
+        background: url(img/icons/mail.svg) no-repeat;
+        position: absolute;
+        top: 5px;
+        left: -30px;
+        width: 32px;
+        height: 32px;
+        -o-object-fit: cover;
+        object-fit: cover;
+      }
+      .connection__btn {
+        font-size: 18px;
+        font-family: 'r';
+        line-height: 120%;
+        color: #fff;
+        background: 0 0;
+      }
+      .nav__list {
+        margin-right: -58px;
+      }
+      @media (max-width: 1400px) {
+        .nav__list {
+          margin-right: 0;
+        }
+      }
+      @media (max-width: 1199.9px) {
+        .nav__list {
+          -webkit-box-ordinal-group: 0;
+          -ms-flex-order: -1;
+          order: -1;
+          margin-left: 37.5px;
+        }
+        .nav__inner {
+          margin-right: 20px;
+        }
+      }
+      .nav__inner {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+      }
+      @media (max-width: 480px) {
+        .nav__list {
+          margin-left: 20px;
+        }
+        .nav__inner {
+          margin-right: 10px;
+        }
+      }
+      .nav__btn {
+        padding: 14px 20px;
+        background-color: #2398ab;
+        border-radius: 10px;
+        font-size: 16px;
+        line-height: 110%;
+        font-family: 'b';
+        color: #fff;
+        margin-right: 12px;
+      }
+      @media (max-width: 1199.9px) {
+        .nav__btn {
+          margin-right: 5px;
+          padding: 9px 20px;
+        }
+      }
+      @media (max-width: 480px) {
+        .nav__btn {
+          margin-right: 0;
+        }
+      }
+      .nav__select {
+        position: relative;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        background: 0 0;
+        width: 125px;
+      }
+      .select__header {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        position: relative;
+        z-index: 4;
+      }
+      .select__current {
+        display: block;
+        padding: 13px 0 13px 13px;
+        width: 100%;
+        font-size: 14px;
+        font-family: 'b';
+        color: #fff;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+      }
+      @media (max-width: 1199.9px) {
+        .select__current {
+          padding: 9px 0 9px 13px;
+        }
+        .menu__list {
+          -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+          -webkit-box-pack: center;
+          -ms-flex-pack: center;
+          justify-content: center;
+        }
+      }
+      .select__body {
+        border-top: 0;
+        display: none;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 110%;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        z-index: 4;
+        background-color: #fff;
+      }
+      .select__item {
+        font-size: 14px;
+        font-family: 's';
+        color: #2398ab;
+        padding: 10px;
+        position: relative;
+      }
+      .select__item:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        border-bottom: 1px solid #d9d9d9;
+        z-index: 4;
+        width: 86px;
+        opacity: 0;
+        visibility: hidden;
+      }
+      .select-arrow {
+        display: inline-block;
+        -webkit-transform-origin: center;
+        -ms-transform-origin: center;
+        transform-origin: center;
+        position: absolute;
+        top: 42%;
+        right: 10px;
+      }
+      .menu__icon {
+        opacity: 1;
+        visibility: visible;
+      }
+      .menu__body-close {
+        display: none;
+      }
+      @media (max-width: 575.9px) {
+        .menu__list {
+          height: auto;
+        }
+      }
+      .menu__list-li {
+        margin-right: 30px;
+      }
+      .menu__list-li:last-child {
+        margin-right: 0;
+      }
+      .menu__list-link {
+        font-size: 20px;
+        line-height: 120%;
+        font-family: 'b';
+        padding: 11px 20px;
+        color: #fff;
+        border: 1px solid #fff;
+        border-radius: 10px;
+      }
+      @media (max-width: 1399.9px) {
+        .menu__list-li {
+          margin-right: 10px;
+        }
+        .menu__list-link {
+          font-size: 18px;
+        }
+      }
+      .menu__footer {
+        margin-top: 100px;
+        display: none;
+      }
+      @media (max-width: 1199.9px) {
+        .menu__footer {
+          display: block;
+        }
+      }
+      .menu__footer-title {
+        font-family: 'b';
+        font-size: 18px;
+        line-height: 120%;
+        color: #131313;
+        margin-bottom: 15px;
+      }
+      .menu__footer-container {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: start;
+        -ms-flex-pack: start;
+        justify-content: flex-start;
+        -webkit-column-gap: 20px;
+        -moz-column-gap: 20px;
+        column-gap: 20px;
+      }
+      .title-header {
+        text-align: center;
+      }
+      .title-header__heading {
+        font-size: 44px;
+        line-height: 110%;
+        font-family: 'b';
+        color: #fff;
+      }
+      @media (max-width: 480px) {
+        .title-header__heading {
+          font-size: 30px;
+        }
+      }
+      @media (max-width: 320px) {
+        .title-header__heading {
+          font-size: 25px;
+        }
+      }
+      .title-header__desc {
+        font-size: 18px;
+        line-height: 120%;
+        font-family: 'r';
+        color: #fff;
+      }
+      @media (max-width: 480px) {
+        .title-header__desc {
+          font-size: 18px;
+        }
+      }
+      @media (max-width: 320px) {
+        .title-header__desc {
+          font-size: 16px;
+        }
+      }
+      .title-header__heading-styles {
+        margin-bottom: 8px;
+      }
+      .glass {
+        position: relative;
+      }
+      .glass::before {
+        content: '';
+        background: url(img/icons/search.svg) no-repeat;
+        position: absolute;
+        top: 14px;
+        left: 10px;
+        width: 15px;
+        height: 15px;
+        -o-object-fit: cover;
+        object-fit: cover;
+      }
+      @media (max-width: 480px) {
+        .glass::before {
+          top: 10px;
+        }
+      }
+      .menu__icon {
+        display: none;
+      }
+      @media (min-width: 1199.9px) {
+        .menu__list {
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-box-align: center;
+          -ms-flex-align: center;
+          align-items: center;
+        }
+        .menu__list > li {
+          padding: 10px 0;
+        }
+      }
+      @media (max-width: 1199.9px) {
+        .menu__icon {
+          z-index: 5;
+          display: block;
+          position: relative;
+          width: 30px;
+          height: 18px;
+          opacity: 1;
+          visibility: visible;
+        }
+        .menu__icon span,
+        .menu__icon::after,
+        .menu__icon::before {
+          left: 0;
+          position: absolute;
+          height: 10%;
+          width: 100%;
+          background-color: #fff;
+          opacity: 1;
+          visibility: visible;
+        }
+        .menu__icon::after,
+        .menu__icon::before {
+          content: '';
+        }
+        .menu__icon::before {
+          top: 0;
+        }
+        .menu__icon::after {
+          bottom: 0;
+        }
+        .menu__icon span {
+          top: 50%;
+          -webkit-transform: scale(1) translate(0, -50%);
+          -ms-transform: scale(1) translate(0, -50%);
+          transform: scale(1) translate(0, -50%);
+        }
+        .menu__body-close {
+          display: block;
+          position: absolute;
+          top: 30px;
+          right: 30px;
+        }
+        .menu__body {
+          position: fixed;
+          top: 0;
+          left: -100%;
+          width: 40%;
+          height: 100%;
+          background-color: #fff;
+          padding: 86px 30px 30px 16px;
+          overflow: auto;
+        }
+        .menu__list > li {
+          -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+          margin: 0 0 36px;
+        }
+        .menu__list > li:last-child {
+          margin-bottom: 0;
+        }
+        .menu__list-link {
+          padding: 0;
+          border: none;
+          color: #131313;
+        }
+        .select__current {
+          padding: 13px 0 13px 13px;
+          color: #2398ab;
+        }
+        .select__body {
+          border: 1px solid #2398ab;
+        }
+        .nav__select {
+          position: relative;
+          border: 1px solid #2398ab;
+          border-radius: 10px;
+          background: 0 0;
+          width: 125px;
+        }
+      }
+      html {
+        scrollbar-gutter: stable;
+      }
+      .wrapper {
+        width: 100%;
+        height: 100%;
+      }
+      ._container {
+        max-width: 1440px;
+        margin: 0 auto;
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="css/style.min.css?_v=20240621113455"
+      media="print"
+      onload="this.media='all'"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css?_v=20240621113455"
+      media="print"
+      onload="this.media='all'"
+    />
+    <title>I-GUIDE</title>
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <section class="header__contacts">
+          <div class="header__contacts-container _container">
+            <div class="header__contacts-subscription socials">
+              <div class="socials__content">
+                <span class="socials__title">Подпишись:</span>
+                <div class="socials__items">
+                  <a href="#" class="socials__link" aria-label="Go to Telegram">
+                    <img
+                      src="img/icons/tg.svg"
+                      alt="Telegram"
+                      class="socials__item"
+                  /></a>
+                  <a href="#" class="socials__link" aria-label="Go to Youtube"
+                    ><img
+                      src="img/icons/yt.svg"
+                      alt="Youtube"
+                      class="socials__item"
+                  /></a>
+                  <a href="#" class="socials__link" aria-label="Go to Instagram"
+                    ><img
+                      src="img/icons/Ig.svg"
+                      alt="Instagram"
+                      class="socials__item"
+                  /></a>
+                  <a href="#" class="socials__link" aria-label="Go to Threads"
+                    ><img
+                      src="img/icons/th.svg"
+                      alt="Threads"
+                      class="socials__item"
+                  /></a>
+                </div>
+              </div>
+
+              <div class="header__contacts-mail connection">
+                <a href="#" class="connection__mail">name@mail.com</a>
+                <button class="connection__btn">СМС: 509-761-9821</button>
+              </div>
+            </div>
+          </div>
+        </section>
+        <div class="header__body">
+          <picture>
+            <source
+              srcset="img/header_bg1x.jpg"
+              media="(max-width: 1200px)"
+              type="image/jpg"
+            />
+            <source
+              srcset="img/header_bg1x.webp"
+              media="(max-width: 1200px)"
+              type="image/webp"
+            />
+            <source
+              srcset="img/header_bg2x.jpg"
+              media="(max-width: 480px)"
+              type="image/jpg"
+            />
+            <source
+              srcset="img/header_bg2x.webp"
+              media="(max-width: 480px)"
+              type="image/webp"
+            />
+            <img
+              src="img/header_bg.jpg"
+              alt=""
+              class="header__body-img"
+              loading="lazy"
+            />
+          </picture>
+          <section class="header__navbar nav _container">
+            <a
+              href="#"
+              class="header__navbar-label"
+              aria-label="Go to home page"
+            >
+              <img
+                src="img/header_logo.svg"
+                alt="label"
+                class="header__navbar-img"
+                width="148"
+                height="44"
+              />
+            </a>
+            <div class="nav__list menu">
+              <div class="menu__icon">
+                <span></span>
+              </div>
+              <nav class="menu__body">
+                <img
+                  src="img/icons/close.svg"
+                  alt=""
+                  class="menu__body-close"
+                  arria-label="закрыть выпадающее меню"
+                />
+                <ul class="menu__list">
+                  <li class="menu__list-li">
+                    <a
+                      href="#"
+                      class="menu__list-link"
+                      aria-label="Go to home page"
+                      >Главная</a
+                    >
+                  </li>
+                  <li class="menu__list-li">
+                    <a
+                      href="#"
+                      class="menu__list-link"
+                      aria-label="Go to guides page"
+                      >Гайды</a
+                    >
+                  </li>
+                  <li class="menu__list-li">
+                    <a
+                      href="#"
+                      class="menu__list-link"
+                      aria-label="Go to services page"
+                      >Услуги</a
+                    >
+                  </li>
+                  <li class="menu__list-li">
+                    <a
+                      href="#"
+                      class="menu__list-link"
+                      aria-label="Go to specialists page"
+                      >Специалисты</a
+                    >
+                  </li>
+                  <li class="menu__list-li">
+                    <a
+                      href="#"
+                      class="menu__list-link"
+                      aria-label="Go to files page"
+                      >Файлы</a
+                    >
+                  </li>
+                  <li class="menu__list-li">
+                    <a
+                      href="#"
+                      class="menu__list-link"
+                      aria-label="Go to about page"
+                      >О компании</a
+                    >
+                  </li>
+                  <li class="menu__list-li"></li>
+                </ul>
+
+                <div class="menu__footer">
+                  <h2 class="menu__footer-title">Соц сети I-GUIDE</h2>
+                  <div class="menu__footer-container">
+                    <img
+                      src="img/icons/tgin.svg"
+                      alt=""
+                      class="menu__footer-img"
+                    />
+                    <img
+                      src="img/icons/ytin.svg"
+                      alt=""
+                      class="menu__footer-img"
+                    />
+                    <img
+                      src="img/icons/Igin.svg"
+                      alt=""
+                      class="menu__footer-img"
+                    />
+                    <img
+                      src="img/icons/thin.svg"
+                      alt=""
+                      class="menu__footer-img"
+                    />
+                  </div>
+                </div>
+              </nav>
+            </div>
+            <div class="nav__inner">
+              <button class="nav__btn" aria-label="Log in">Войти</button>
+
+              <div class="nav__select select" data-da=".menu__body, 1200, 2">
+                <div class="select__header">
+                  <span class="select__current" data-type="select"
+                    >Русский</span
+                  >
+                  <picture>
+                    <source
+                      srcset="img/icons/arrow-selectin.svg"
+                      media="(max-width: 1200px)"
+                    />
+                    <img
+                      src="img/icons/arrow-select.svg"
+                      alt=""
+                      class="select-arrow"
+                      data-type="select-icon"
+                      loading="lazy"
+                    />
+                  </picture>
+                </div>
+
+                <div class="select__body">
+                  <div class="select__item is-active" data-type="select-item">
+                    Русский
+                  </div>
+                  <div class="select__item" data-type="select-item">
+                    Английский
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="header__content">
+            <div class="header__content-body _container">
+              <div class="header__content-tilte title-header">
+                <h1 class="title-header__heading title-header__heading-styles">
+                  Руководство для иммигрантов США
+                </h1>
+                <p class="title-header__desc">
+                  Здесь вы можете найти все что необходимо на каждом этапе
+                  вашего пути к гражданству США
+                </p>
+              </div>
+
+              <div class="header__content-data">
+                <input
+                  type="text"
+                  class="header__content-input"
+                  aria-label="search data field"
+                  placeholder="Искать среди всех материалов"
+                  value=""
+                />
+                <button
+                  class="header__content-btn"
+                  aria-label="search data button"
+                >
+                  Поиск
+                </button>
+                <button
+                  class="header__content-btn-sm"
+                  aria-label="search data button"
+                >
+                  <img
+                    src="img/icons/search.svg"
+                    alt=""
+                    arria-label="поиск данных"
+                    width="15"
+                    height="15"
+                    class="header__content-img-sm"
+                  />
+                </button>
+              </div>
+
+              <div class="header__content-buttons">
+                <button
+                  class="header__content-button glass"
+                  aria-label="search I-589"
+                >
+                  I-589
+                </button>
+                <button
+                  class="header__content-button glass"
+                  aria-label="search Work"
+                >
+                  Work
+                </button>
+                <button
+                  class="header__content-button glass"
+                  aria-label="search SSN"
+                >
+                  SSN
+                </button>
+                <button
+                  class="header__content-button glass"
+                  aria-label="search I-94"
+                >
+                  I-94
+                </button>
+              </div>
+            </div>
+          </section>
+        </div>
+      </header>
+
+      <main></main>
+    </div>
+    <script src="js/app.min.js?_v=20240621113455"></script>
+
+    <noscript
+      ><link rel="stylesheet" href="css/style.min.css?_v=20240621113455"
+    /></noscript>
+
+    <noscript
+      ><link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css?_v=20240621113455"
+    /></noscript>
+  </body>
+</html>
